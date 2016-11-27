@@ -2,7 +2,7 @@
 
 namespace FetchLeo\LaravelXml;
 
-use FetchLeo\LaravelXml\ConverterManager;
+use FetchLeo\LaravelXml\Facades\Xml as XmlFacade;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +17,11 @@ class XmlServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__.'/../../config/laravel-xml.php', 'laravel-xml');
+        $this->publishes([
+            __DIR__ . '/../../config/laravel-xml.php' => config_path('laravel-xml.php')
+        ]);
+
+        $this->mergeConfigFrom(__DIR__ . '/../../config/laravel-xml.php', 'laravel-xml');
     }
 
     /**
@@ -28,15 +32,15 @@ class XmlServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
-        AliasLoader::getInstance()->alias('Xml', 'FetchLeo\LaravelXml\Facades\Xml');
+        AliasLoader::getInstance()->alias('Xml', XmlFacade::class);
     }
 
     private function registerBindings()
     {
         $this->app->bind('xml', Xml::class);
-        $this->app->singleton('laravelxml.converters.manager', function() {
+        $this->app->singleton('FetchLeo\LaravelXml\Contracts\ConverterManager', 'laravelxml.converters.manager');
+        $this->app->singleton('laravelxml.converters.manager', function () {
             return app(ConverterManager::class);
         });
-        $this->app->singleton('FetchLeo\LaravelXml\Contracts\ConverterManager', 'laravelxml.converters.manager');
     }
 }
