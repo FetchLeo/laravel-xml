@@ -19,7 +19,7 @@ class XmlServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../../config/laravel-xml.php' => config_path('laravel-xml.php')
-        ]);
+        ], 'laravel-xml');
 
         $this->mergeConfigFrom(__DIR__ . '/../../config/laravel-xml.php', 'laravel-xml');
     }

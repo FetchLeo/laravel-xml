@@ -41,7 +41,7 @@ There's nothing else you really need to do! Of course, you can always modify the
 If you would like to publish the LaravelXML configuration file, simply run
 
 ```
-php artisan vendor:publish --provider=FetchLeo\LaravelXml\XmlServiceProvider
+php artisan vendor:publish --tag=laravel-xml
 ```
 
 ## Usage
