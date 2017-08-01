@@ -19,7 +19,7 @@ To use LaravelXML, there are not really any specific prerequisites. Just make su
 You can check to see if you have it by running ```php -i | grep xml``` and seeing if anything comes back.
 If nothing shows up after running that command, you need to install the XML extension.
 
-You also must have PHP 5.5.9 or above.
+You also must have PHP 7.0 or above.
 ## Installation
 
 Installation is quick and easy. All you have to do is run
