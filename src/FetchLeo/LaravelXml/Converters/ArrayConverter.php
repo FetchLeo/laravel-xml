@@ -5,6 +5,7 @@ namespace FetchLeo\LaravelXml\Converters;
 use FetchLeo\LaravelXml\Contracts\Converter;
 use FetchLeo\LaravelXml\Exceptions\CantConvertValueException;
 use SimpleXMLElement;
+use FetchLeo\LaravelXml\Facades\Xml;
 
 class ArrayConverter implements Converter
 {
